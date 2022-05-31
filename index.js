@@ -41,10 +41,6 @@ app.use(
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('<h1>To start using the API enter /api/persons</h1>');
-});
-
 app.get('/api/persons', (req, res) => {
     res.json(persons);
 });
