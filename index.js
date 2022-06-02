@@ -39,7 +39,7 @@ app.get('/api/persons/:id', (req, res, next) => {
         .catch((error) => next(error));
 });
 
-app.get('/info', (req, res) => {
+app.get('/info', (req, res, next) => {
     const date = new Date();
     Person.find({})
         .then((all) => {
@@ -53,7 +53,7 @@ app.get('/info', (req, res) => {
 
 app.delete('/api/persons/:id', (req, res, next) => {
     Person.findByIdAndRemove(req.params.id)
-        .then((result) => {
+        .then(() => {
             res.status(204).end();
         })
         .catch((error) => next(error));
@@ -114,6 +114,7 @@ const errorHandler = (error, request, response, next) => {
 
 app.use(errorHandler);
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
