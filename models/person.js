@@ -40,7 +40,8 @@ const personSchema = new mongoose.Schema({
                     return false;
                 }
             },
-            message: (props) => `${props.value} is not a valid phone number`,
+            message: (props) =>
+                `${props.value} is not a valid phone number add in the following format oxx-xxxxx`,
         },
     },
 });
